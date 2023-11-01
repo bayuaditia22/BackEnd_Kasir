@@ -40,7 +40,13 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'passport',
+            'provider' => 'admin',
+        ],
     ],
+
+ 
 
     /*
     |--------------------------------------------------------------------------
@@ -61,6 +67,10 @@ return [
 
     'providers' => [
         'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+    'admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
