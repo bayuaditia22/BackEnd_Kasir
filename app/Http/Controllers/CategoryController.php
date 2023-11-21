@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\category;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use Exception;
@@ -66,7 +66,8 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         try {
-            $data = $category->update();
+            $validated  = $request->validated();
+            $data = $category->update($validated);
             return response()->json(['status' => true, 'message' => ' update data sukses', 'data' => $data]);
         } catch (Exception | PDOException $e) {
             return response()->json(['status' => false, 'message' => 'gagal update data', 'error_type' => $e]);

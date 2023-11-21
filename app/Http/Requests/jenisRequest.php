@@ -6,11 +6,10 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
-class StorepelangganRequest extends FormRequest
-
+class jenisRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine if the user is authorized to make this request. 
      */
     public function authorize(): bool
     {
@@ -25,15 +24,13 @@ class StorepelangganRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => 'required',
-            'email' => 'required',
-            'nomor_telepon' => 'required',
-            'alamat' => 'required',
+            'kategori_id' => 'required',
+            'nama_jenis' => 'required',
+
         ];
     }
 
-    public function failedValidation(Validator $validator)
-    {
+    public function failedValidation(Validator $validator){
         throw new HttpResponseException(response()->json([
             'success' => false,
             'message' => 'Validator errors',
